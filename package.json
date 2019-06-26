@@ -1,0 +1,20 @@
+{
+   "name": "red-build-init",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore"
+   },
+   "keywords": [],
+   "author": "Piotr Nowinski",
+   "license": "ISC",
+   "devDependencies": {},
+   "dependencies": {
+      "body-parser": "^1.19.0",
+      "express": "^4.17.1",
+      "passport": "^0.4.0",
+      "passport-google-oauth": "^2.0.0",
+      "pug": "^2.0.4"
+   }
+}

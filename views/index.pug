@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title="Hello Pug"
+    body
+        p Log In 
+        form(action="http://localhost:3000/auth/google", method="get")
+            h5
+                input(type="text", name="login") 
+                b  LOGIN 
+                
+            h5
+                input(type="password", name="password")
+                b  PASSWORD 
+            input(type="submit", value="Submit")
