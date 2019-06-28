@@ -5,10 +5,10 @@ var config = require('./config');
 var app = express();
 var googleProfile = {};
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
    done(null, user);
 });
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser((obj, done) => {
    done(null, obj);
 });
 
@@ -19,7 +19,7 @@ passport.use(
          clientSecret: config.GOOGLE_CLIENT_SECRET,
          callbackURL: config.CALLBACK_URL
       },
-      function(accessToken, refreshToken, profile, cb) {
+      (accessToken, refreshToken, profile, cb) => {
          googleProfile = {
             id: profile.id,
             displayName: profile.displayName
@@ -31,19 +31,17 @@ passport.use(
 
 app.set('view engine', 'pug');
 app.set('views', './views');
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app routes
-app.get('/login', function(req, res) {
-   res.render('index', { user: req.login });
+app.get('/', (req, res) => {
+   res.render('index', { user: req.user });
 });
 
-app.get('/logged', function(req, res) {
+app.get('/logged', (req, res) => {
    res.render('logged', { user: googleProfile });
 });
-//Passport routes
+
 app.get(
    '/auth/google',
    passport.authenticate('google', {
